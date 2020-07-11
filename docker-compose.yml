@@ -1,0 +1,39 @@
+version: '3'
+services:
+  app: &app_base
+    container_name: app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/app:cached
+      - /tmp
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    command: sh ./entrypoint-rails.sh
+  db:
+    container_name: db
+    image: postgres:12.3-alpine
+    environment:
+      POSTGRES_PASSWORD: 'fuckyou'
+    volumes:
+      - db-data:/var/lib/postgres
+    ports:
+      - 5432:5432
+  webpack:
+    <<: *app_base
+    container_name: webpack
+    command: bin/webpack-dev-server
+    ports:
+      - 3035:3035
+    depends_on:
+      - app
+    tty: false
+    stdin_open: false
+volumes:
+  db-data:
+    driver: local
