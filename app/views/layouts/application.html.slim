@@ -1,14 +1,36 @@
 doctype html
 html
   head
-    title
-      = content_for?(:title) ? yield(:title) : 'App'
-      / TODO: Configに移す
+    title = content_for?(:title) ? yield(:title) : 'App'
     = csrf_meta_tags
     = csp_meta_tag
     / 'data-turbolinks-track': 'reload'でリソースの更新を確認し、必要に応じてリロード
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     / = javascript_pack_tag 'hello_vue', 'data-turbolinks-track': 'reload'
+    / TODO: ファビコン設定
+    / = favicon_link_tag('favicon.ico')
   body
     = yield
+
+
+
+/ TODO: レイアウト作る
+
+/ doctype html
+/ html
+/   head
+/     title = page_title
+/     = csrf_meta_tags
+/     = csp_meta_tag
+/     = stylesheet_link_tag    'application', media: 'all'
+/     = javascript_include_tag 'application'
+/     = favicon_link_tag('favicon.ico')
+/   body
+/     .wrapper
+/       = render partial: "shared/sidebar"
+/       .main-panel
+/         = render partial: "shared/topnav"
+/         .content
+/           .container-fluid
+/             = yield

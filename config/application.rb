@@ -17,5 +17,7 @@ module App
     # the framework and any gems in your application.
 
     config.i18n.default_locale = :ja
+    config.time_zone = 'Asia/Tokyo'
+    config.paths.add 'lib', eager_load: true
   end
 end
