@@ -9,6 +9,7 @@ services:
     volumes:
       - ./:/app:cached
       - /tmp
+      - bundle:/usr/local/bundle
     ports:
       - 3000:3000
     depends_on:
@@ -34,4 +35,6 @@ services:
     stdin_open: false
 volumes:
   db-data:
+    driver: local
+  bundle:
     driver: local
