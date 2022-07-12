@@ -8,7 +8,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && apt-get install -y build-essential libpq-dev postgresql-client \
   && apt-get install -y nodejs yarn
 
-RUN gem install rails -v "6.0.2"
+RUN gem install rails -v "6.1.6"
 RUN mkdir /app
 WORKDIR /app
 

@@ -12,6 +12,10 @@
     ```
       docker-compose run --rm app rails db:create db:migrate db:seed
     ```
+  4. gemがないと怒られた場合、bundle installする(オプション)
+    ```
+      docker-compose run app bundle install
+    ```
 
 ## TODO
   * docekr-compose.prd.yml作る
